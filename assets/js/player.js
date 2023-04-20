@@ -4,7 +4,7 @@ class Player {
         this.x = _$canvas.height / 2
         this.y = _$canvas.height / 2;
         this.angle = 0;
-        this.angleVel = 6 / 180;
+        this.angleVel = 8 / 180;
         this.vel = 4;
     }
 
