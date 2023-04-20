@@ -1,6 +1,7 @@
 class Game {
     constructor() {
         this.player = new Player();
+        this.map = new Map();
         this.fps = 60;
         this.pressedKeys = [];
         this.addEventListeners();
@@ -26,6 +27,7 @@ class Game {
 
     draw() {
         drawRect('black', [0, 0, _$canvas.width, _$canvas.height]);
+        this.map.draw();
         this.player.draw();
     }
 
