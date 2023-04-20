@@ -7,6 +7,11 @@ class Game {
     }
 
     update() {
+        if (this.pressedKeys.includes('arrowright')) {
+            this.player.turn('right');
+        } if (this.pressedKeys.includes('arrowleft')) {
+            this.player.turn('left');
+        }
     }
 
     draw() {
