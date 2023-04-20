@@ -12,6 +12,16 @@ class Game {
         } if (this.pressedKeys.includes('arrowleft')) {
             this.player.turn('left');
         }
+
+        if (this.pressedKeys.includes('z')) {
+            this.player.move('forward');
+        } if (this.pressedKeys.includes('s')) {
+            this.player.move('backward');
+        } if (this.pressedKeys.includes('d')) {
+            this.player.move('right');
+        } if (this.pressedKeys.includes('q')) {
+            this.player.move('left');
+        }
     }
 
     draw() {
