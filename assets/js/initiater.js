@@ -7,5 +7,5 @@ function init() {
 }
 
 function setUpCanvas() {
-
+    _$canvas.width = 1600
 }
