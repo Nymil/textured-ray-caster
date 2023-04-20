@@ -1,5 +1,6 @@
 class Player {
-    constructor() {
+    constructor(game) {
+        this.map = game.map;
         this.x = _$canvas.height / 2
         this.y = _$canvas.height / 2;
         this.angle = 0;
@@ -30,8 +31,8 @@ class Player {
             nextY = this.y + this.vel * Math.sin(this.angle + Math.PI / 2);
         }
 
-        this.x = nextX;
-        this.y = nextY;
+        if (!this.map.isWall(Math.floor(nextX / this.map.cellLength), Math.floor(this.y / this.map.cellLength))) this.x = nextX;
+        if (!this.map.isWall(Math.floor(this.x / this.map.cellLength), Math.floor(nextY / this.map.cellLength))) this.y = nextY;
     }
 
     turn(direction) {

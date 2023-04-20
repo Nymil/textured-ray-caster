@@ -14,6 +14,10 @@ class Map {
         }
     }
 
+    isWall(col, row) {
+        return this.board[row][col] === 1;
+    }
+
     getBoard() {
         return [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],

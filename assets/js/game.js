@@ -1,7 +1,7 @@
 class Game {
     constructor() {
-        this.player = new Player();
         this.map = new Map();
+        this.player = new Player(this);
         this.fps = 60;
         this.pressedKeys = [];
         this.addEventListeners();
