@@ -31,8 +31,16 @@ class Player {
             nextY = this.y + this.vel * Math.sin(this.angle + Math.PI / 2);
         }
 
-        if (!this.map.isWall(Math.floor(nextX / this.map.cellLength), Math.floor(this.y / this.map.cellLength))) this.x = nextX;
-        if (!this.map.isWall(Math.floor(this.x / this.map.cellLength), Math.floor(nextY / this.map.cellLength))) this.y = nextY;
+        if (this.validXMovement(nextX)) this.x = nextX;
+        if (this.validYMovement(nextY)) this.y = nextY;
+    }
+
+    validXMovement(nextX) {
+        return !this.map.isWall(Math.floor(nextX / this.map.cellLength), Math.floor(this.y / this.map.cellLength))
+    }
+
+    validYMovement(nextY) {
+        return !this.map.isWall(Math.floor(this.x / this.map.cellLength), Math.floor(nextY / this.map.cellLength))
     }
 
     turn(direction) {
