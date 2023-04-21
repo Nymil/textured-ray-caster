@@ -25,3 +25,7 @@ p {
 canvas {
     box-shadow: 1rem 1rem 1rem #03012E;
 }
+
+.hidden {
+    display: none;
+}

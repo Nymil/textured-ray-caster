@@ -1,7 +1,7 @@
 class Renderer {
     constructor(game) {
         this.game = game;
-        this.texture = '../images/wall.png';
+        this.texture = document.querySelector('img');
     }
 
     renderView(rays) {
@@ -11,8 +11,7 @@ class Renderer {
             const wallWidth = _$canvas.width / rays.length;
             const posX = index * wallWidth;
             const posY = (_$canvas.height - wallHeight) / 2;
-            const brightness = 10000 / (rayLength ** 2) > 1 ? 1 : 10000 / (rayLength ** 2);
-            drawRect(`rgb(${255 * brightness}, ${255 * brightness}, ${255 * brightness})`, [posX, posY, wallWidth + 0.75, wallHeight]);
         })
+        _ctx.drawImage(this.texture, 0, 0);
     }
 }
