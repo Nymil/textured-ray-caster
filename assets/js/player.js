@@ -6,6 +6,8 @@ class Player {
         this.angle = 0;
         this.angleVel = 8 / 180;
         this.vel = 4;
+        this.fov = Math.PI / 3;
+        this.rayCount = 300;
         this.rays = [];
     }
 
@@ -16,7 +18,11 @@ class Player {
     }
 
     castRays() {
-        this.rays = [new Ray(this, this.angle)];
+        this.rays = [];
+        for (let angle = this.angle - this.fov / 2; angle < this.angle + this.fov / 2; angle += this.fov / this.rayCount) {
+            const ray = new Ray(this, angle);
+            this.rays.push(ray);
+        }
         this.rays.forEach(ray => ray.cast());
     }
 
