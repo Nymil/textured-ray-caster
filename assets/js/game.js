@@ -23,6 +23,8 @@ class Game {
         } if (this.pressedKeys.includes('q')) {
             this.player.move('left');
         }
+
+        this.player.castRays();
     }
 
     draw() {

@@ -6,11 +6,18 @@ class Player {
         this.angle = 0;
         this.angleVel = 8 / 180;
         this.vel = 4;
+        this.rays = [];
     }
 
     draw() {
         drawCircle('white', [this.x, this.y], 7);
         drawLine('#a1a1a1', [this.x, this.y, this.x + 15 * Math.cos(this.angle), this.y + 15 * Math.sin(this.angle)]);
+        this.rays.forEach(ray => ray.draw())
+    }
+
+    castRays() {
+        this.rays = [new Ray(this, this.angle)];
+        this.rays.forEach(ray => ray.cast());
     }
 
     move(direction) {
