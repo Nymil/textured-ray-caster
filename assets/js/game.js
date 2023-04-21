@@ -3,7 +3,7 @@ class Game {
         this.renderer = new Renderer(this);
         this.map = new Map();
         this.player = new Player(this);
-        this.fps = 60;
+        this.fps = 30;
         this.pressedKeys = [];
         this.addEventListeners();
     }

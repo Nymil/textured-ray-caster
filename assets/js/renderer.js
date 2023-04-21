@@ -12,7 +12,7 @@ class Renderer {
             const posX = index * wallWidth;
             const posY = (_$canvas.height - wallHeight) / 2;
             const offsetPercentage = this.getOffsetPercentage(ray);
-            _ctx.drawImage(this.texture, offsetPercentage * this.texture.width, 0, 0.002 * this.texture.width, this.texture.height, posX, posY, wallWidth, wallHeight);
+            _ctx.drawImage(this.texture, offsetPercentage * this.texture.width, 0, 0.0001 * this.texture.width, this.texture.height, posX, posY, wallWidth, wallHeight);
         })
     }
 

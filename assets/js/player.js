@@ -4,8 +4,8 @@ class Player {
         this.x = _$canvas.height / 2
         this.y = _$canvas.height / 2;
         this.angle = 0;
-        this.angleVel = 8 / 180;
-        this.vel = 4;
+        this.angleVel = 1 / 18;
+        this.vel = 8;
         this.fov = 2 * Math.PI / 9;
         this.rayCount = 300;
         this.rays = [];
