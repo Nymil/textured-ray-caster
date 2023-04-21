@@ -6,8 +6,8 @@ class Player {
         this.angle = 0;
         this.angleVel = 8 / 180;
         this.vel = 4;
-        this.fov = Math.PI / 3;
-        this.rayCount = 300;
+        this.fov = 2 * Math.PI / 9;
+        this.rayCount = 400;
         this.rays = [];
     }
 

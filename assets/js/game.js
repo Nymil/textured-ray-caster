@@ -1,5 +1,6 @@
 class Game {
     constructor() {
+        this.renderer = new Renderer(this);
         this.map = new Map();
         this.player = new Player(this);
         this.fps = 60;
@@ -29,8 +30,9 @@ class Game {
 
     draw() {
         drawRect('black', [0, 0, _$canvas.width, _$canvas.height]);
-        this.map.draw();
-        this.player.draw();
+        this.renderer.renderView(this.player.rays);
+        /*this.map.draw();
+        this.player.draw();*/
     }
 
     addPressedKey(key) {
