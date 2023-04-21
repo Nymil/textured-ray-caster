@@ -31,8 +31,8 @@ class Game {
     draw() {
         drawRect('black', [0, 0, _$canvas.width, _$canvas.height]);
         this.renderer.renderView(this.player.rays);
-        /*this.map.draw();
-        this.player.draw();*/
+        // this.map.draw();
+        // this.player.draw();
     }
 
     addPressedKey(key) {

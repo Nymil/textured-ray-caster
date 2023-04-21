@@ -11,7 +11,20 @@ class Renderer {
             const wallWidth = _$canvas.width / rays.length;
             const posX = index * wallWidth;
             const posY = (_$canvas.height - wallHeight) / 2;
+            const offsetPercentage = this.getOffsetPercentage(ray);
+            _ctx.drawImage(this.texture, offsetPercentage * this.texture.width, 0, 0.002 * this.texture.width, this.texture.height, posX, posY, wallWidth, wallHeight);
         })
-        _ctx.drawImage(this.texture, 0, 0);
+    }
+
+    getOffsetPercentage(ray) {
+        let offset;
+        if (ray.hitDirection === 0) {
+            // use y
+            offset = Math.sin(ray.angle) < 0 ? this.game.map.cellLength - (ray.endY % this.game.map.cellLength) : ray.endY % this.game.map.cellLength;
+        } else {
+            // use x
+            offset = Math.cos(ray.angle) < 0 ? ray.endX % this.game.map.cellLength : this.game.map.cellLength - (ray.endX % this.game.map.cellLength);
+        }
+        return offset / this.game.map.cellLength;
     }
 }

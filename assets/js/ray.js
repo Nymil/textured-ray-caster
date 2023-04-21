@@ -6,6 +6,7 @@ class Ray {
         this.endX = null;
         this.endY = null;
         this.length = 0;
+        this.hitDirection = null;
         this.rayTooLong = false;
         this.endFound = false;
         this.angle = angle;
@@ -25,12 +26,15 @@ class Ray {
 
         while (!this.endFound && !this.rayTooLong) {
             if (distToX < distToY) {
+                this.hitDirection = 0;
                 this.length = distToX;
                 distToX += distOneX;
             } else if (distToY < distToX) {
+                this.hitDirection = 1;
                 this.length = distToY;
                 distToY += distOneY;
             } else {
+                this.hitDirection = 0;
                 this.length = distToX;
                 distToX += distOneX;
                 distToY += distOneY;
