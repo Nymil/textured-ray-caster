@@ -4,26 +4,13 @@ class Player {
         this.x = _$canvas.height / 2
         this.y = _$canvas.height / 2;
         this.angle = 0;
-        this.angleVel = 1 / 18;
-        this.vel = 8;
-        this.fov = 2 * Math.PI / 9;
-        this.rayCount = 300;
-        this.rays = [];
+        this.angleVel = 1 / 20;
+        this.vel = 4;
     }
 
     draw() {
         drawCircle('white', [this.x, this.y], 7);
         drawLine('#a1a1a1', [this.x, this.y, this.x + 15 * Math.cos(this.angle), this.y + 15 * Math.sin(this.angle)]);
-        this.rays.forEach(ray => ray.draw())
-    }
-
-    castRays() {
-        this.rays = [new Ray(this, this.angle)];
-        for (let angle = this.angle - this.fov / 2; angle < this.angle + this.fov / 2; angle += this.fov / this.rayCount) {
-            const ray = new Ray(this, angle);
-            this.rays.push(ray);
-        }
-        this.rays.forEach(ray => ray.cast());
     }
 
     move(direction) {

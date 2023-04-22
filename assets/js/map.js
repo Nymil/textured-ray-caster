@@ -15,7 +15,7 @@ class Map {
     }
 
     isWall(col, row) {
-        return this.board[row][col] === 1;
+        return this.board[row][col] !== 0;
     }
 
     getBoard() {
