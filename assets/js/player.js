@@ -9,8 +9,9 @@ class Player {
     }
 
     draw() {
-        drawCircle('white', [this.x * this.map.cellLength, this.y * this.map.cellLength], 7);
-        drawLine('#a1a1a1', [this.x * this.map.cellLength, this.y * this.map.cellLength, (this.x + Math.cos(this.angle) / 2) * this.map.cellLength, (this.y + Math.sin(this.angle) / 2) * this.map.cellLength]);
+        const visualCenter = {x: this.x * this.map.cellLength, y: this.y * this.map.cellLength};
+        drawCircle('white', [visualCenter.x, visualCenter.y], 7);
+        drawLine('#a1a1a1', [visualCenter.x, visualCenter.y, visualCenter.x + 15 * Math.cos(this.angle), visualCenter.y + 15 * Math.sin(this.angle)]);
     }
 
     move(direction) {
