@@ -50,4 +50,11 @@ class Player {
             this.angle -= this.angleVel;
         }
     }
+
+    get getMapPosition() {
+        return {
+            x: this.x / this.map.cellLength,
+            y: this.y / this.map.cellLength
+        }
+    }
 }
