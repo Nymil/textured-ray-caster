@@ -1,15 +1,14 @@
 class Player {
     constructor(game) {
         this.map = game.map;
-        this.x = this.map.board.length / 2;
-        this.y = this.map.board.length / 2;
+        this.pos = {x: this.map.board.length / 2, y: this.map.board.length / 2};
         this.angle = 0;
         this.angleVel = 0.06;
         this.vel = 0.08;
     }
 
     draw() {
-        const visualCenter = {x: this.x * this.map.cellLength, y: this.y * this.map.cellLength};
+        const visualCenter = {x: this.pos.x * this.map.cellLength, y: this.pos.y * this.map.cellLength};
         drawCircle('white', [visualCenter.x, visualCenter.y], 7);
         drawLine('#a1a1a1', [visualCenter.x, visualCenter.y, visualCenter.x + 15 * Math.cos(this.angle), visualCenter.y + 15 * Math.sin(this.angle)]);
     }
@@ -19,21 +18,21 @@ class Player {
         let nextY;
 
         if (direction === 'forward') {
-            nextX = this.x + this.vel * Math.cos(this.angle);
-            nextY = this.y + this.vel * Math.sin(this.angle);
+            nextX = this.pos.x + this.vel * Math.cos(this.angle);
+            nextY = this.pos.y + this.vel * Math.sin(this.angle);
         } else if (direction === 'backward') {
-            nextX = this.x - this.vel * Math.cos(this.angle);
-            nextY = this.y - this.vel * Math.sin(this.angle);
+            nextX = this.pos.x - this.vel * Math.cos(this.angle);
+            nextY = this.pos.y - this.vel * Math.sin(this.angle);
         } else if (direction === 'left') {
-            nextX = this.x + this.vel * Math.cos(this.angle - Math.PI / 2);
-            nextY = this.y + this.vel * Math.sin(this.angle - Math.PI / 2);
+            nextX = this.pos.x + this.vel * Math.cos(this.angle - Math.PI / 2);
+            nextY = this.pos.y + this.vel * Math.sin(this.angle - Math.PI / 2);
         } else {
-            nextX = this.x + this.vel * Math.cos(this.angle + Math.PI / 2);
-            nextY = this.y + this.vel * Math.sin(this.angle + Math.PI / 2);
+            nextX = this.pos.x + this.vel * Math.cos(this.angle + Math.PI / 2);
+            nextY = this.pos.y + this.vel * Math.sin(this.angle + Math.PI / 2);
         }
 
-        if (this.validXMovement(nextX)) this.x = nextX;
-        if (this.validYMovement(nextY)) this.y = nextY;
+        if (this.validXMovement(nextX)) this.pos.x = nextX;
+        if (this.validYMovement(nextY)) this.pos.y = nextY;
     }
 
     validXMovement(nextX) {
@@ -54,8 +53,8 @@ class Player {
 
     get mapPos() {
         return {
-            col: Math.floor(this.x),
-            row: Math.floor(this.y)
+            col: Math.floor(this.pos.x),
+            row: Math.floor(this.pos.y)
         }
     }
 }
