@@ -2,7 +2,7 @@ class Game {
     constructor() {
         this.map = new Map();
         this.player = new Player(this);
-        this.raycaster = new Raycaster();
+        this.raycaster = new Raycasting();
         this.fps = 60;
         this.pressedKeys = [];
         this.addEventListeners();

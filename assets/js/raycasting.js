@@ -1,4 +1,4 @@
-class Raycaster {
+class Raycasting {
     constructor() {
 
     }
