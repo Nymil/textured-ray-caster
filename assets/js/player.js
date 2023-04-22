@@ -1,16 +1,16 @@
 class Player {
     constructor(game) {
         this.map = game.map;
-        this.x = _$canvas.height / 2
-        this.y = _$canvas.height / 2;
+        this.x = this.map.board.length / 2;
+        this.y = this.map.board.length / 2;
         this.angle = 0;
-        this.angleVel = 1 / 20;
-        this.vel = 4;
+        this.angleVel = 0.06;
+        this.vel = 0.08;
     }
 
     draw() {
-        drawCircle('white', [this.x, this.y], 7);
-        drawLine('#a1a1a1', [this.x, this.y, this.x + 15 * Math.cos(this.angle), this.y + 15 * Math.sin(this.angle)]);
+        drawCircle('white', [this.x * this.map.cellLength, this.y * this.map.cellLength], 7);
+        drawLine('#a1a1a1', [this.x * this.map.cellLength, this.y * this.map.cellLength, (this.x + Math.cos(this.angle) / 2) * this.map.cellLength, (this.y + Math.sin(this.angle) / 2) * this.map.cellLength]);
     }
 
     move(direction) {
@@ -36,11 +36,11 @@ class Player {
     }
 
     validXMovement(nextX) {
-        return !this.map.isWall(Math.floor(nextX / this.map.cellLength), Math.floor(this.y / this.map.cellLength))
+        return !this.map.isWall(Math.floor(nextX), this.mapPos.row);
     }
 
     validYMovement(nextY) {
-        return !this.map.isWall(Math.floor(this.x / this.map.cellLength), Math.floor(nextY / this.map.cellLength))
+        return !this.map.isWall(this.mapPos.col, Math.floor(nextY));
     }
 
     turn(direction) {
@@ -51,10 +51,10 @@ class Player {
         }
     }
 
-    get getMapPosition() {
+    get mapPos() {
         return {
-            x: this.x / this.map.cellLength,
-            y: this.y / this.map.cellLength
+            col: Math.floor(this.x),
+            row: Math.floor(this.y)
         }
     }
 }
