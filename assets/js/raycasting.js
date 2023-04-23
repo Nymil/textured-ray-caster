@@ -4,7 +4,7 @@ class Raycasting {
         this.rayCount = Math.floor(_$canvas.width / 2);
         this.maxRayDepth = 21;
         this.rayCastingResult = [];
-        this.objectsToRender = [];git 
+        this.objectsToRender = [];git
     }
 
     rayCast() {
