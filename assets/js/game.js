@@ -3,8 +3,7 @@ class Game {
         this.map = new Map();
         this.player = new Player(this);
         this.raycasting = new Raycasting(this);
-        this.fps = 60;
-        this.fpsCheck = performance.now();
+        this.fps = 1000 / 60;
         this.pressedKeys = [];
         this.addEventListeners();
     }
@@ -45,11 +44,9 @@ class Game {
 
     run() {
         setInterval(() => {
-            console.log(1000 / (performance.now() - this.fpsCheck));
-            this.fpsCheck = performance.now();
             this.update();
             this.draw();
-        }, 1);
+        }, this.fps);
     }
 
     addEventListeners() {
