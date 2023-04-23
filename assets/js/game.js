@@ -2,8 +2,9 @@ class Game {
     constructor() {
         this.map = new Map();
         this.player = new Player(this);
-        this.raycaster = new Raycasting();
+        this.raycasting = new Raycasting(this);
         this.fps = 60;
+        this.fpsCheck = performance.now();
         this.pressedKeys = [];
         this.addEventListeners();
     }
@@ -24,12 +25,14 @@ class Game {
         } if (this.pressedKeys.includes('q')) {
             this.player.move('left');
         }
+        this.raycasting.rayCast();
     }
 
     draw() {
         drawRect('black', [0, 0, _$canvas.width, _$canvas.height]);
         this.map.draw();
         this.player.draw();
+        this.raycasting.draw();
     }
 
     addPressedKey(key) {
@@ -42,9 +45,11 @@ class Game {
 
     run() {
         setInterval(() => {
+            console.log(1000 / (performance.now() - this.fpsCheck));
+            this.fpsCheck = performance.now();
             this.update();
             this.draw();
-        }, 1000 / this.fps);
+        }, 1);
     }
 
     addEventListeners() {

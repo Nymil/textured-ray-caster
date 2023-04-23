@@ -3,6 +3,7 @@ class Player {
         this.map = game.map;
         this.pos = {x: this.map.board.length / 2, y: this.map.board.length / 2};
         this.angle = 0;
+        this.fov = Math.PI / 3;
         this.angleVel = 0.06;
         this.vel = 0.08;
     }
