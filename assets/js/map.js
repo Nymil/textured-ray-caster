@@ -15,6 +15,7 @@ class Map {
     }
 
     isWall(col, row) {
+        if (col < 0 || row < 0 || col >= this.board.length || row >= this.board.length) return false;
         return this.board[row][col] !== 0;
     }
 
